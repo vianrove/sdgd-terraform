@@ -1,8 +1,8 @@
-resource "azurerm_resource_group" "sdgd-rg" {
+resource "azurerm_resource_group" "dochub-rg" {
   location = "eastus"
-  name     = "SDGD-group"
+  name     = "DocHub-group"
 }
 
 output "resourcegroupname" {
-  value = azurerm_resource_group.sdgd-rg.name
+  value = azurerm_resource_group.dochub-rg.name
 }

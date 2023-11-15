@@ -6,9 +6,9 @@ terraform {
     }
   }
   backend "azurerm" {
-    resource_group_name  = "sdgd_terraform"
-    storage_account_name = "terraformstoragesdgd"
-    container_name       = "tfstatesdevops"
+    resource_group_name  = "dochub-terraform"
+    storage_account_name = "terraformstoragedochub"
+    container_name       = "tfstatedevops"
     key                  = "terraform.tfstate"
   }
 }

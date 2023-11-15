@@ -5,14 +5,14 @@ resource "azurerm_linux_web_app" "web-api-carrito1" {
     WEBSITES_ENABLE_APP_SERVICE_STORAGE = "false"
     database                            = "gestiondocumental"
     db_port                             = "3306"
-    host                                = "mysql-instance-sdgd.mysql.database.azure.com"
-    password                            = "sdgd8@23"
+    host                                = "mysql-instance-dochub.mysql.database.azure.com"
+    password                            = "dochub8@23"
     user                                = "admin378"
   }
   https_only          = true
   location            = "eastus"
-  name                = "sdgd-shoppingcart-east"
-  resource_group_name = "SDGD-group"
+  name                = "dochub-shoppingcart-east"
+  resource_group_name = "DocHub-group"
   service_plan_id     = var.serviceplan1.id
   tags = {
     Region1 = "Api"
@@ -43,14 +43,14 @@ resource "azurerm_linux_web_app" "web-api-carrito2" {
     WEBSITES_ENABLE_APP_SERVICE_STORAGE = "false"
     database                            = "gestiondocumental"
     db_port                             = "3306"
-    host                                = "mysql-instance-sdgd.mysql.database.azure.com"
-    password                            = "sdgd8@23"
+    host                                = "mysql-instance-dochub.mysql.database.azure.com"
+    password                            = "dochub8@23"
     user                                = "admin378"
   }
   https_only          = true
-  location            = "westus"
-  name                = "sdgd-shoppingcart-west"
-  resource_group_name = "SDGD-group"
+  location            = "westus3"
+  name                = "dochub-shoppingcart-west"
+  resource_group_name = "DocHub-group"
   service_plan_id     = var.serviceplan2.id
   tags = {
     Region2 = "Api"

@@ -5,19 +5,19 @@ module "resourcegroup" {
 
 ### MONGODB
 module "mongodb" {
-  source = "./modules/mongodb"
+  source            = "./modules/mongodb"
   resourcegroupname = module.resourcegroup.resourcegroupname
 }
 
 ### STORAGE ACCOUNT
 module "storageaccount" {
-  source = "./modules/storageaccount"
+  source            = "./modules/storageaccount"
   resourcegroupname = module.resourcegroup.resourcegroupname
 }
 
 ### APP SERVICE PLANS
 module "appserviceplan" {
-  source = "./modules/appserviceplan"
+  source            = "./modules/appserviceplan"
   resourcegroupname = module.resourcegroup.resourcegroupname
 }
 
@@ -85,18 +85,20 @@ module "appservicepasarela" {
 
 ### FRONTDOOR
 module "frontdoor" {
-  source         = "./modules/frontdoor"
+  source            = "./modules/frontdoor"
   resourcegroupname = module.resourcegroup.resourcegroupname
-  carritoapi1    = module.appservicecarrito.carritoapi1
-  carritoapi2    = module.appservicecarrito.carritoapi2
-  clientesapi1   = module.appserviceclientes.clientesapi1
-  clientesapi2   = module.appserviceclientes.clientesapi2
-  documentosapi1 = module.appservicedocumentos.documentosapi1
-  documentosapi2 = module.appservicedocumentos.documentosapi2
-  frontservice1  = module.appservicefront.frontservice1
-  frontservice2  = module.appservicefront.frontservice2
-  loginapi1      = module.appservicelogin.loginapi1
-  loginapi2      = module.appservicelogin.loginapi2
-  pasarelaapi1   = module.appservicepasarela.pasarelaapi1
-  pasarelaapi2   = module.appservicepasarela.pasarelaapi2
+  serviceplan1 = module.appserviceplan.serviceplan1
+  serviceplan2 = module.appserviceplan.serviceplan2
+  carritoapi1       = module.appservicecarrito.carritoapi1
+  carritoapi2       = module.appservicecarrito.carritoapi2
+  clientesapi1      = module.appserviceclientes.clientesapi1
+  clientesapi2      = module.appserviceclientes.clientesapi2
+  documentosapi1    = module.appservicedocumentos.documentosapi1
+  documentosapi2    = module.appservicedocumentos.documentosapi2
+  frontservice1     = module.appservicefront.frontservice1
+  frontservice2     = module.appservicefront.frontservice2
+  loginapi1         = module.appservicelogin.loginapi1
+  loginapi2         = module.appservicelogin.loginapi2
+  pasarelaapi1      = module.appservicepasarela.pasarelaapi1
+  pasarelaapi2      = module.appservicepasarela.pasarelaapi2
 }

@@ -12,7 +12,7 @@ resource "azurerm_service_plan" "service-plan1" {
 
 ### Service plan WEST-US
 resource "azurerm_service_plan" "service-plan2" {
-  location            = "westus"
+  location            = "westus3"
   name                = "AppServicePlan-Region2"
   os_type             = "Linux"
   resource_group_name = var.resourcegroupname
@@ -23,6 +23,6 @@ resource "azurerm_service_plan" "service-plan2" {
 }
 
 variable "resourcegroupname" {
-  type = string
+  type        = string
   description = "resource group name"
 }

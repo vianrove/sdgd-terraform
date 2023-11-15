@@ -2,8 +2,8 @@
 resource "azurerm_cosmosdb_account" "mongodb" {
   enable_free_tier    = true
   kind                = "MongoDB"
-  location            = "westus"
-  name                = "sdgd-mongodb"
+  location            = "westus3"
+  name                = "dochub-mongodb"
   offer_type          = "Standard"
   resource_group_name = var.resourcegroupname
   tags = {
@@ -15,10 +15,10 @@ resource "azurerm_cosmosdb_account" "mongodb" {
   }
   geo_location {
     failover_priority = 0
-    location          = "westus"
+    location          = "westus3"
   }
 }
 variable "resourcegroupname" {
-  type = string
+  type        = string
   description = "resource group name"
 }

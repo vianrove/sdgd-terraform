@@ -6,15 +6,15 @@ resource "azurerm_linux_web_app" "web-api-pasarela1" {
   }
   https_only          = true
   location            = "eastus"
-  name                = "sdgd-pasarela-east"
-  resource_group_name = "SDGD-group"
+  name                = "dochub-pasarela-east"
+  resource_group_name = "DocHub-group"
   service_plan_id     = var.serviceplan1.id
   tags = {
     Region1 = "Api"
   }
   site_config {
     application_stack {
-      docker_image_name   = "vianrove/api-pasarela${var.imagebuild}"
+      docker_image_name   = "vianrove/api-pasarela:${var.imagebuild}"
       docker_registry_url = "https://index.docker.io"
     }
     always_on  = false
@@ -42,16 +42,16 @@ resource "azurerm_linux_web_app" "web-api-pasarela2" {
     WEBSITES_ENABLE_APP_SERVICE_STORAGE = "false"
   }
   https_only          = true
-  location            = "westus"
-  name                = "sdgd-pasarela-west"
-  resource_group_name = "SDGD-group"
+  location            = "westus3"
+  name                = "dochub-pasarela-west"
+  resource_group_name = "DocHub-group"
   service_plan_id     = var.serviceplan2.id
   tags = {
     Region2 = "Api"
   }
   site_config {
     application_stack {
-      docker_image_name   = "vianrove/api-pasarela${var.imagebuild}"
+      docker_image_name   = "vianrove/api-pasarela:${var.imagebuild}"
       docker_registry_url = "https://index.docker.io"
     }
     always_on  = false

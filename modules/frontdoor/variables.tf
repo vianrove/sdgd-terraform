@@ -1,6 +1,16 @@
 variable "resourcegroupname" {
-  type = string
+  type        = string
   description = "resource group name"
+}
+
+variable "serviceplan1" {
+  type = any
+  description = "App service plan1"
+}
+
+variable "serviceplan2" {
+  type = any
+  description = "App service plan2"
 }
 
 variable "carritoapi1" {

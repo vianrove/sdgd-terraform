@@ -1,44 +1,48 @@
 ### Front door profile set-up
 resource "azurerm_cdn_frontdoor_profile" "fdprofile" {
   name                     = "FD-profile"
-  resource_group_name      = "SDGD-group"
+  resource_group_name      = var.resourcegroupname
   response_timeout_seconds = 60
   sku_name                 = "Standard_AzureFrontDoor"
   tags = {
     Global = "FDProfile"
   }
+  depends_on = [
+    var.serviceplan1,
+    var.serviceplan2
+  ]
 }
 
 
 ### Front door endpoints
 resource "azurerm_cdn_frontdoor_endpoint" "fdprofile-carrito" {
   cdn_frontdoor_profile_id = azurerm_cdn_frontdoor_profile.fdprofile.id
-  name                     = "sdgd-carrito"
+  name                     = "dochub-carrito"
 }
 
 resource "azurerm_cdn_frontdoor_endpoint" "fdprofile-clientes" {
   cdn_frontdoor_profile_id = azurerm_cdn_frontdoor_profile.fdprofile.id
-  name                     = "sdgd-clientes"
+  name                     = "dochub-clientes"
 }
 
 resource "azurerm_cdn_frontdoor_endpoint" "fdprofile-documentos" {
   cdn_frontdoor_profile_id = azurerm_cdn_frontdoor_profile.fdprofile.id
-  name                     = "sdgd-documentos"
+  name                     = "dochub-documentos"
 }
 
 resource "azurerm_cdn_frontdoor_endpoint" "fdprofile-login" {
   cdn_frontdoor_profile_id = azurerm_cdn_frontdoor_profile.fdprofile.id
-  name                     = "sdgd-login"
+  name                     = "dochub-login"
 }
 
 resource "azurerm_cdn_frontdoor_endpoint" "fdprofile-pasarela" {
   cdn_frontdoor_profile_id = azurerm_cdn_frontdoor_profile.fdprofile.id
-  name                     = "sdgd-pasarela"
+  name                     = "dochub-pasarela"
 }
 
 resource "azurerm_cdn_frontdoor_endpoint" "fdprofile-front" {
   cdn_frontdoor_profile_id = azurerm_cdn_frontdoor_profile.fdprofile.id
-  name                     = "sdgd-front"
+  name                     = "dochub-front"
 }
 
 ### Front door routes
@@ -91,7 +95,7 @@ resource "azurerm_cdn_frontdoor_route" "fdroute-front" {
   cdn_frontdoor_endpoint_id     = azurerm_cdn_frontdoor_endpoint.fdprofile-front.id
   cdn_frontdoor_origin_group_id = azurerm_cdn_frontdoor_origin_group.fdorig-group-pasarela.id
   cdn_frontdoor_origin_ids      = [azurerm_cdn_frontdoor_origin.fdorig-pasarela1.id, azurerm_cdn_frontdoor_origin.fdorig-pasarela2.id]
-  name                          = "sdgd-front"
+  name                          = "dochub-front"
   patterns_to_match             = ["/*"]
   supported_protocols           = ["Http", "Https"]
 }
@@ -99,7 +103,7 @@ resource "azurerm_cdn_frontdoor_route" "fdroute-front" {
 ### Front door origins
 resource "azurerm_cdn_frontdoor_origin_group" "fdorig-group-carrito" {
   cdn_frontdoor_profile_id                                  = azurerm_cdn_frontdoor_profile.fdprofile.id
-  name                                                      = "sdgd-carrito"
+  name                                                      = "dochub-carrito"
   restore_traffic_time_to_healed_or_new_endpoint_in_minutes = 0
   session_affinity_enabled                                  = false
   health_probe {
@@ -133,7 +137,7 @@ resource "azurerm_cdn_frontdoor_origin" "fdorig-carrito2" {
 
 resource "azurerm_cdn_frontdoor_origin_group" "fdorig-group-clientes" {
   cdn_frontdoor_profile_id                                  = azurerm_cdn_frontdoor_profile.fdprofile.id
-  name                                                      = "sdgd-clientes"
+  name                                                      = "dochub-clientes"
   restore_traffic_time_to_healed_or_new_endpoint_in_minutes = 0
   session_affinity_enabled                                  = false
   health_probe {
@@ -167,7 +171,7 @@ resource "azurerm_cdn_frontdoor_origin" "fdorig-clientes2" {
 
 resource "azurerm_cdn_frontdoor_origin_group" "fdorig-group-documentos" {
   cdn_frontdoor_profile_id                                  = azurerm_cdn_frontdoor_profile.fdprofile.id
-  name                                                      = "sdgd-documentos"
+  name                                                      = "dochub-documentos"
   restore_traffic_time_to_healed_or_new_endpoint_in_minutes = 0
   session_affinity_enabled                                  = false
   health_probe {
@@ -201,7 +205,7 @@ resource "azurerm_cdn_frontdoor_origin" "fdorig-documentos2" {
 
 resource "azurerm_cdn_frontdoor_origin_group" "fdorig-group-login" {
   cdn_frontdoor_profile_id                                  = azurerm_cdn_frontdoor_profile.fdprofile.id
-  name                                                      = "sdgd-login"
+  name                                                      = "dochub-login"
   restore_traffic_time_to_healed_or_new_endpoint_in_minutes = 0
   session_affinity_enabled                                  = false
   health_probe {
@@ -235,7 +239,7 @@ resource "azurerm_cdn_frontdoor_origin" "fdorig-login2" {
 
 resource "azurerm_cdn_frontdoor_origin_group" "fdorig-group-pasarela" {
   cdn_frontdoor_profile_id                                  = azurerm_cdn_frontdoor_profile.fdprofile.id
-  name                                                      = "sdgd-pasarela"
+  name                                                      = "dochub-pasarela"
   restore_traffic_time_to_healed_or_new_endpoint_in_minutes = 0
   session_affinity_enabled                                  = false
   health_probe {
@@ -269,7 +273,7 @@ resource "azurerm_cdn_frontdoor_origin" "fdorig-pasarela2" {
 
 resource "azurerm_cdn_frontdoor_origin_group" "fdorig-group-front" {
   cdn_frontdoor_profile_id                                  = azurerm_cdn_frontdoor_profile.fdprofile.id
-  name                                                      = "sdgd-front"
+  name                                                      = "dochub-front"
   restore_traffic_time_to_healed_or_new_endpoint_in_minutes = 0
   session_affinity_enabled                                  = false
   health_probe {

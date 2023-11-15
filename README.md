@@ -1,9 +1,9 @@
-# SDGD Infrastructure as code
+# DocHub Infrastructure as code
 
 ## Table of Contents
 
 
-- [SDGD Infrastructure as code](#sdgd-infrastructure-as-code)
+- [DocHub Infrastructure as code](#dochub-infrastructure-as-code)
   - [Table of Contents](#table-of-contents)
   - [About ](#about-)
   - [Getting Started ](#getting-started-)
@@ -12,7 +12,7 @@
 
 ## About <a name = "about"></a>
 
-This is an infrastructure as code implementation for the sdgd project made using terraform. With the provided script we provision an active-passive infrastructure on Azure.
+This is an infrastructure as code implementation for the dochub project made using terraform. With the provided script we provision an active-passive infrastructure on Azure.
 <img title="Diagram" alt="Architecture diagram" src="diagram.png">
 
 ## Getting Started <a name = "getting_started"></a>
