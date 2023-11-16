@@ -4,12 +4,12 @@ variable "resourcegroupname" {
 }
 
 variable "serviceplan1" {
-  type = any
+  type        = any
   description = "App service plan1"
 }
 
 variable "serviceplan2" {
-  type = any
+  type        = any
   description = "App service plan2"
 }
 

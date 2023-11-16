@@ -93,8 +93,8 @@ resource "azurerm_cdn_frontdoor_route" "fdroute-pasarela" {
 
 resource "azurerm_cdn_frontdoor_route" "fdroute-front" {
   cdn_frontdoor_endpoint_id     = azurerm_cdn_frontdoor_endpoint.fdprofile-front.id
-  cdn_frontdoor_origin_group_id = azurerm_cdn_frontdoor_origin_group.fdorig-group-pasarela.id
-  cdn_frontdoor_origin_ids      = [azurerm_cdn_frontdoor_origin.fdorig-pasarela1.id, azurerm_cdn_frontdoor_origin.fdorig-pasarela2.id]
+  cdn_frontdoor_origin_group_id = azurerm_cdn_frontdoor_origin_group.fdorig-group-front.id
+  cdn_frontdoor_origin_ids      = [azurerm_cdn_frontdoor_origin.fdorig-front1.id, azurerm_cdn_frontdoor_origin.fdorig-front2.id]
   name                          = "dochub-front"
   patterns_to_match             = ["/*"]
   supported_protocols           = ["Http", "Https"]

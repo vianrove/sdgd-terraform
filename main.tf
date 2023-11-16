@@ -87,8 +87,8 @@ module "appservicepasarela" {
 module "frontdoor" {
   source            = "./modules/frontdoor"
   resourcegroupname = module.resourcegroup.resourcegroupname
-  serviceplan1 = module.appserviceplan.serviceplan1
-  serviceplan2 = module.appserviceplan.serviceplan2
+  serviceplan1      = module.appserviceplan.serviceplan1
+  serviceplan2      = module.appserviceplan.serviceplan2
   carritoapi1       = module.appservicecarrito.carritoapi1
   carritoapi2       = module.appservicecarrito.carritoapi2
   clientesapi1      = module.appserviceclientes.clientesapi1
